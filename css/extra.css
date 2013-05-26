@@ -1,0 +1,117 @@
+.JSpopup {
+ background-color: __background__;
+ color: __text__;
+ border: 1px solid __border__;
+ box-shadow: .1em .1em .1em __border__;
+ border-radius: 2px;
+ padding: .3em .5em;
+ font-size: .9em;
+}
+
+/* loading gif */
+#dw__loading {
+ text-align: center;
+ margin-bottom: 1.4em;
+}
+
+.secedit {
+ float: right;
+ margin-top: -1.4em;
+}
+
+[dir=rtl] .secedit {
+ float: left;
+}
+
+.secedit input.button {
+ font-size: 75%;
+}
+
+.Tools select {
+ padding: .3em .1em;
+ width: 100% !important;
+}
+
+.content ul.idx {
+ padding-left: 0;
+}
+
+[dir=rtl] .content ul.idx {
+ padding-right: 0;
+}
+
+.content ul.idx li {
+ list-style-image: url(../../images/bullet.png);
+}
+
+.content ul.idx li.open {
+ list-style-image: url(../../images/open.png);
+}
+
+.content ul.idx li.closed {
+ list-style-image: url(../../images/closed.png);
+}
+
+[dir=rtl] .content ul.idx li.closed {
+ list-style-image: url(../../images/closed-rtl.png);
+}
+
+.dokuwiki .changeType {
+ margin-bottom: .5em;
+}
+
+.dokuwiki form.changes ul li {
+ list-style: none;
+ margin-left: 0;
+}
+
+[dir=rtl] .dokuwiki form.changes ul li {
+ margin-right: 0;
+}
+
+.dokuwiki form.changes ul li span,.dokuwiki form.changes ul li a {
+ vertical-align: middle;
+}
+
+.dokuwiki form.changes ul li span.user a {
+ vertical-align: bottom;
+}
+
+.dokuwiki form.changes ul li.minor {
+ opacity: .7;
+}
+
+.dokuwiki form.changes li span.date {
+ 
+}
+
+.dokuwiki form.changes li a.diff_link {
+ vertical-align: baseline;
+}
+
+.dokuwiki form.changes li a.revisions_link {
+ vertical-align: baseline;
+}
+
+.dokuwiki form.changes li a.wikilink1,.dokuwiki form.changes li a.wikilink2 {
+ 
+}
+
+.dokuwiki form.changes li span.sum {
+ font-weight: bold;
+}
+
+.dokuwiki form.changes li span.user {
+ 
+}
+
+.dokuwiki div.pagenav {
+ text-align: center;
+ margin: 1.4em 0;
+}
+
+.dokuwiki div.pagenav-prev,.dokuwiki div.pagenav-next {
+ display: inline;
+ margin: 0 .5em;
+}
+

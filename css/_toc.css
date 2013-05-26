@@ -1,0 +1,71 @@
+/* toc container */
+#dw__toc {
+ float: right;
+ margin: 0px 0px 1.4em 1.4em;
+ width: 25em;
+ background-color: __background_alt__;
+ opacity: 1.0;
+ color: inherit;
+ z-index: 1000;
+ font-size: 0.75em;
+}
+
+[dir=rtl] #dw__toc {
+ float: left;
+ margin: 0 1.4em 1.4em 0;
+}
+
+#dw__toc h3.toggle {
+ padding: .2em .5em;
+ font-weight: bold;
+}
+
+#dw__toc .toggle strong {
+ float: right;
+ margin: 0 .2em;
+}
+
+[dir=rtl] #dw__toc .toggle strong {
+ float: left;
+}
+
+#dw__toc>div {
+ padding: .2em .5em;
+}
+
+#dw__toc ul {
+ padding: 0;
+ margin: 0;
+}
+
+#dw__toc ul li {
+ list-style: none;
+ padding: 0;
+ margin: 0;
+ line-height: 1.1;
+}
+
+#dw__toc ul li div.li {
+ padding: .15em 0;
+}
+
+#dw__toc ul ul {
+ padding-left: 1em;
+}
+
+[dir=rtl] #dw__toc ul ul {
+ padding-left: 0;
+ padding-right: 1em;
+}
+
+#dw__toc ul ul li {
+ 
+}
+
+#dw__toc ul li a {
+ 
+}
+
+#dw__toc ul li.clear {
+ 
+}
