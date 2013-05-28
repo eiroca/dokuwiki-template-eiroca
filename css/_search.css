@@ -5,24 +5,18 @@
 
 /* search results page
 ********************************************************************/
-div.search {
- position: relative;
- clear: right;
+span.search {
+ display: inline;
  float: right;
- width: 50%;
- margin: 0.1em 0em;
- padding: 0.15em .15em 0.25em;
- background: __highlight_neu__;
+ width: auto;
+ padding: 0.5em 0em;
  text-align: right;
 }
 
 form.search {
  display: inline;
+ margin-right: 0.15em;
  font-size: 0.875em;
- position: relative;
- top: 0.1em;
- right: 0.5em;
- margin-right: 0.5em;
 }
 
 #IE7 form.search {
@@ -31,7 +25,7 @@ form.search {
 }
 
 form.search input.edit {
- width: 18em;
+ width: 12em;
  padding: .35em 22px .35em .1em;
 }
 

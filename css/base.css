@@ -15,43 +15,6 @@ ol,ul {
  list-style: none;
 }
 
-
-.page ul, .page  ol {
-    padding: 0 0 0 1.5em;
-}
-[dir=rtl] .page ul, [dir=rtl] .page ol {
-    padding: 0 1.5em 0 0;
-}
-
-.page li, .page dd {
-    padding: 0;
-    margin: 0 0 0 1.5em;
-}
-[dir=rtl] .page li, [dir=rtl] .page dd {
-    margin: 0 1.5em 0 0;
-}
-.page dt {
-    font-weight: bold;
-    margin: 0;
-    padding: 0;
-}
-
-.page li ul, .page  li ol, .page  li dl, .page  dl ul, .page  dl ol, .page dl dl {
-    margin-bottom: 0;
-    padding: 0;
-}
-.page li li {
-    font-size: 100%;
-}
-
-.page ul             { list-style: square outside; }
-.page ol             { list-style: decimal outside; }
-.page ol ol          { list-style-type: lower-alpha; }
-.page ol ol ol       { list-style-type: upper-roman; }
-.page ol ol ol ol    { list-style-type: upper-alpha; }
-.page ol ol ol ol ol { list-style-type: lower-roman; }
-
-
 a img {
  border: none
 }
@@ -82,14 +45,26 @@ a,p a {
  color: __link__;
 }
 
-a:visited {
- text-decoration: underline;
- color: __link_visited__;
-}
 
 a:hover {
  text-decoration: underline;
  color: __link_over__;
+}
+
+a:visited {
+ text-decoration: underline;
+ font-weight: bold;
+ color: __link_visited__;
+}
+
+.footer a:visited {
+ text-decoration: underline;
+ color: __highlight_neu__;
+}
+
+.footer a:hover {
+ text-decoration: underline;
+ color: __highlight_neu__;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -144,73 +119,86 @@ h3,h4,h5,h6 {
 }
 
 .page {
+ position: relative;
+ top: 0px;
+ left: 0px;
  width: 95%;
  float: none;
  overflow: hidden;
- padding: 0.5em 1em;
+ padding: 0.25em 1em;
  -moz-box-shadow: 0 0 5px 5px __site_background__;
  -webkit-box-shadow: 0 0 5px 5px __site_background__;
  box-shadow: 0 0 5px 5px __site_background__;
  margin: 1em auto;
+ width: 95%;
 }
 
 .header {
  padding: 0;
  margin: 0;
+ position: relative;
 }
 
 .logo {
  float: left;
- width: 20em;
+ width: 25%;
  min-height: 2em;
  text-align: center;
 }
 
-#headline {
+.tagline {
+ display: block;
  color: #FBA818;
- width: 20em;
+ width: 90%;
  text-align: center;
  margin: 0.1em auto 0.5em;
  font-weight: bold;
 }
 
 .navigation {
- position: relative;
+ display: inline;
  float: right;
- width: 60%;
- margin: 0.1em 0em;
- padding: 0em 0.5em;
+ width: 70%;
+ margin: 1em 0em 0em 0em;
+ padding: 0em 0.5em 0em 0em;
  text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
  background: __background_neu__;
 }
 
-.navigation ul li {
- float: left;
- line-height: normal;
+.navigation .menu {
+ position: relative;
+ top: 0.375em;
+ left: 0.5em;
+ display: inline;
+ text-align: left;
 }
 
-.navigation ul li a {
+.menu .item {
+ display: inline;
+ line-height: normal;
+ white-space: nowrap;
+}
+
+.menu a {
  font-size: 18px;
  color: __text_neu__;
- text-transform: capitalize;
  font-weight: normal;
- display: block; /* IE6, IE7 line height fix */
- padding: 0.5em 0.25em;
+ padding: 0.5em 0.2em;
  background-color: transparent;
  text-decoration: none;
 }
 
-.navigation ul li a:hover {
+.menu a:hover {
  color: __highlight_neu__;
 }
 
-.navigation ul li a.current {
+.menu a.current {
  background-color: __highlight_neu__;
  cursor: default;
- padding: 0.5em 0.25em;
+ padding: 0.5em 0.2em;
 }
 
-.navigation ul li a.current:hover {
+.menu a.current:hover {
  color: __text_neu__;
 }
 
@@ -230,18 +218,21 @@ h3,h4,h5,h6 {
 .data {
  position: relative;
  float: left;
- width: 78%;
  clear: both;
+ width: 70%;
+}
+
+.docData {
+ display: inline;
 }
 
 .sidebar {
  float: right;
- width: 20%;
+ width: 25%;
  padding: 0.5em;
  margin-right: 0.5em;
  background-color: __background_alt__;
  border: 2px solid __highlight_alt__;
- width: 18%;
 }
 
 .footer {
@@ -254,67 +245,71 @@ h3,h4,h5,h6 {
  margin-top: 0em;
 }
 
-div.docInfo {
- text-align: right;
-}
-
-[dir=rtl] div.docInfo {
+.docInfo {
+ display: block;
+ text-align: left;
+ padding: 0em 0.5em;
  text-align: left;
 }
 
-div.docId {
- display: inline;
- overflow: hidden;
- position: absolute;
- left: 0px;
- padding: 0.15em .5em;
+[dir=rtl] .docInfo {
  text-align: right;
- display: none;
 }
 
-[dir=rtl] div.docId {
- right: auto;
- left: 0em;
-}
-
-div.docId span {
+.docID {
  font-size: 0.875em;
  color: __text_alt__;
- display: inline;
-}
-
-div.docData {
  display: block;
+ overflow: hidden;
+ padding: 0.15em .15em;
+ text-align: center;
+ text-decoration: underline;
 }
 
-.footer div {
- padding: 0em 0.25em;
-}
-
-.footer .user {
- display: inline;
- margin: auto;
-}
-
-.footer .ActionTop {
- display: inline;
+.tools {
+ height: 2.1em;
+ line-height: 2.1em;
+ overflow: visible;
+ display: block;
  float: right;
 }
 
-.footer .Tools {
+.tools form {
  display: inline;
- float: right;
 }
 
-.footer .youarehere {
+.tools select {
+ padding: .3em .1em;
+}
+
+.actionTop {
+ display: inline;
+}
+
+.youarehere {
+ display: block;
+ float: left;
+ clear: left;
+ padding: 0em 0.5em;
+}
+
+.breadcrumb {
+ display: block;
+ float: left;
+ clear: left;
+ padding: 0em 0.5em;
+}
+
+.user {
+ display: block;
+ float: left;
+ clear: left;
+ padding: 0em 0.5em;
+}
+
+.licence {
+ display: block;
  clear: both;
-}
-
-.footer .breadcrumbs {
- clear: both;
-}
-
-.footer .licence {
  text-align: center;
 }
 
@@ -322,5 +317,58 @@ div.docData {
  text-align: center;
 }
 
+.page ul,.page  ol {
+ padding: 0 0 0 1.5em;
+}
 
+[dir=rtl] .page ul,[dir=rtl] .page ol {
+ padding: 0 1.5em 0 0;
+}
 
+.page li,.page dd {
+ padding: 0;
+ margin: 0 0 0 1.5em;
+}
+
+[dir=rtl] .page li,[dir=rtl] .page dd {
+ margin: 0 1.5em 0 0;
+}
+
+.page dt {
+ font-weight: bold;
+ margin: 0;
+ padding: 0;
+}
+
+.page li ul,.page  li ol,.page  li dl,.page  dl ul,.page  dl ol,.page dl dl {
+ margin-bottom: 0;
+ padding: 0;
+}
+
+.page li li {
+ font-size: 100%;
+}
+
+.page ul {
+ list-style: square outside;
+}
+
+.page ol {
+ list-style: decimal outside;
+}
+
+.page ol ol {
+ list-style-type: lower-alpha;
+}
+
+.page ol ol ol {
+ list-style-type: upper-roman;
+}
+
+.page ol ol ol ol {
+ list-style-type: upper-alpha;
+}
+
+.page ol ol ol ol ol {
+ list-style-type: lower-roman;
+}

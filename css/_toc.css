@@ -1,18 +1,10 @@
 /* toc container */
 #dw__toc {
- float: right;
- margin: 0px 0px 1.4em 1.4em;
- width: 25em;
- background-color: __background_alt__;
- opacity: 1.0;
+ float: none;
+ margin: 0px;
  color: inherit;
  z-index: 1000;
- font-size: 0.75em;
-}
-
-[dir=rtl] #dw__toc {
- float: left;
- margin: 0 1.4em 1.4em 0;
+ font-size: 1em;
 }
 
 #dw__toc h3.toggle {

@@ -27,11 +27,6 @@
  font-size: 75%;
 }
 
-.Tools select {
- padding: .3em .1em;
- width: 100% !important;
-}
-
 .content ul.idx {
  padding-left: 0;
 }

@@ -17,97 +17,48 @@ $showSidebar = $hasSidebar && ($ACT=='show');
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
 <?php echo tpl_favicon(array('favicon', 'mobile', 'generic')) ?>
 <?php tpl_metaheaders() ?>
-<title><?php tpl_WikiName() ?> - <?php tpl_pagetitle() ?></title>
+<title><?php tpl_WikiTitle() ?></title>
 <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
 </head>
 <body>
  <!--[if lte IE 7 ]><div id="IE7"><![endif]-->
  <!--[if IE 8 ]><div id="IE8"><![endif]-->
- <?php global $MSG; if(isset($MSG)): ?>
- <div class="message container smooth_border desktop-only">
-  <?php html_msgarea(); ?>
- </div>
- <?php endif; ?>
+ <?php tpl_WikiMessages() ?>
  <div id="dokuwiki__top" class="page container dokuwiki">
   <div class="header container">
-   <ul class="a11y skip">
-    <li><a href="#dokuwiki__content"><?php echo $lang['skip_to_content']; ?> </a></li>
-   </ul>
+   <?php tpl_A11Y('skip_to_content') ?>
    <div class="logo">
-    <?php
-    // get logo either out of the template images folder or data/media folder
-    $logoSize = array();
-    $logo = tpl_getMediaFile(array(':wiki:logo.png', ':logo.png', 'res/logo.png'), false, $logoSize);
-    // display logo and wiki title in a link to the home page
-    tpl_link(wl(), '<img src="'.$logo.'" '.$logoSize[3].' alt="'.tpl_WikiName(false).'" />', 'accesskey="h" title="[H]"');
-    if ($conf['tagline']) echo "<p id=\"headline\">".$conf['tagline']."</p>";
-    ?>
+    <?php tpl_WikiLogo() ?>
+    <?php tpl_WikiTagLine() ?>
+    <?php tpl_WikiDocID() ?>
    </div>
    <div class="navigation smooth_border">
-    <?php tpl_WikiMenu(); ?>
+    <?php tpl_WikiMenu() ?>
+    <?php tpl_WikiSearch() ?>
    </div>
-   <div class="search smooth_border">
-    <div class="docId">
-     <span>
-      <?php global $ID; echo hsc($ID) ?>
-     </span>
-    </div>
-    <?php tpl_searchform(); ?>
-   </div>
-   <hr class="a11y" />
+   <?php tpl_A11Y() ?>
   </div>
   <div class="content container">
+   <?php tpl_A11Y('content') ?>
    <div id="dokuwiki__content" class="data">
-    <a id="dokuwiki__top"></a>
-    <div class="docData">
-     <?php tpl_flush() ?>
-     <?php tpl_toc() ?>
-     <?php tpl_content(false) ?>
-    </div>
-    <div class="docInfo hidden">
-     <?php tpl_pageinfo() ?>
-    </div>
-    <?php tpl_flush() ?>
-    <hr class="a11y" />
+    <?php tpl_WikiDocData() ?>
    </div>
+   <?php tpl_A11Y() ?>
    <div class="sidebar smooth_border">
-     <?php tpl_include_page($conf['sidebar'], 1, 1); ?>
+    <?php tpl_WikiSidebar() ?>
+    <?php tpl_WikiTOC() ?>
    </div>
   </div>
  </div>
  <div class="footer container">
-  <div id="footerInfo group">
-   <?php if($conf['youarehere']): ?>
-   <div class="youarehere">
-    <?php tpl_youarehere() ?>
-   </div>
-   <?php endif ?>
-   <?php if($conf['breadcrumbs']): ?>
-   <div class="breadcrumbs">
-    <?php tpl_breadcrumbs() ?>
-   </div>
-   <?php endif ?>
-  </div>
-  <div class="tools group">
-   <h3 class="a11y">
-    <?php echo $lang['site_tools']; ?>
-   </h3>
-   <?php
-   if ($_SERVER['REMOTE_USER']) {
-     echo '<div class="user">';
-     tpl_userinfo();
-     echo '</div>';
-   }
-   ?>
-   <div class="ActionTop">
-    <?php tpl_action('top', 1, '', 0, '', ''. ''); ?>
-   </div>
-   <div class="Tools">
-    <?php tpl_actiondropdown($lang['tools']); ?>
-   </div>
-   <hr class="a11y" />
-  </div>
-  <div class="licence"> <?php global $__lang; tpl_pagelink($__lang."copyright", "Copyright (c) eIrOcA 2001-2013") ?></div>
+  <?php tpl_A11Y('site_tools') ?>
+  <?php tpl_WikiTools() ?>
+  <?php tpl_WikiDocInfo() ?>
+  <?php tpl_WikiYouAreHere() ?>
+  <?php tpl_WikiBreadCrumbs() ?>
+  <?php tpl_WikiUser() ?>
+  <?php tpl_WikiLicence() ?>
+  <?php tpl_A11Y() ?>
  </div>
  <!--[if ( lte IE 7 | IE 8 ) ]></div><![endif]-->
  <div class="no">
