@@ -8,8 +8,10 @@
 }
 
 #dw__toc h3.toggle {
- padding: .2em .5em;
  font-weight: bold;
+ margin: inherit;
+ font-size: inherit;
+ padding: inherit;
 }
 
 #dw__toc .toggle strong {
@@ -21,8 +23,9 @@
  float: left;
 }
 
-#dw__toc>div {
- padding: .2em .5em;
+#dw__toc ul .level1 {
+ margin-left: 0em;
+ list-style: none;
 }
 
 #dw__toc ul {
@@ -31,10 +34,8 @@
 }
 
 #dw__toc ul li {
- list-style: none;
- padding: 0;
- margin: 0;
- line-height: 1.1;
+ margin-left: 1.5em;
+ line-height: 1.2;
 }
 
 #dw__toc ul li div.li {

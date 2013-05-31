@@ -11,10 +11,6 @@ html,body,div,span,h1,h2,h3,h4,h5,h6,p,ol,ul,li,form,label,legend,caption,aside,
  vertical-align: baseline;
 }
 
-ol,ul {
- list-style: none;
-}
-
 a img {
  border: none
 }
@@ -23,16 +19,10 @@ aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
  display: block
 }
 
-div {
- /* border: 1px solid red; */
- 
-}
-
 /* Global styles */
 html,body {
  font-family: __font_family__;
  width: 100%;
- height: 100%;
  font-size: 13px;
  color: __text__;
  margin: 0 0 1px;
@@ -44,7 +34,6 @@ a,p a {
  text-decoration: none;
  color: __link__;
 }
-
 
 a:hover {
  text-decoration: underline;
@@ -81,6 +70,7 @@ h1 {
  font-size: 32px;
  line-height: 1.7;
  margin-bottom: 16px;
+ border-bottom: 1px dotted __text__;
 }
 
 h2 {
@@ -88,6 +78,7 @@ h2 {
  line-height: 1.6;
  padding-top: 12px;
  margin-bottom: 8px;
+ border-bottom: 1px dotted __text__;
 }
 
 h3,h4,h5,h6 {
@@ -317,58 +308,58 @@ h3,h4,h5,h6 {
  text-align: center;
 }
 
-.page ul,.page  ol {
+ul,ol {
  padding: 0 0 0 1.5em;
 }
 
-[dir=rtl] .page ul,[dir=rtl] .page ol {
+[dir=rtl]  ul,[dir=rtl] ol {
  padding: 0 1.5em 0 0;
 }
 
-.page li,.page dd {
+li,dd {
  padding: 0;
  margin: 0 0 0 1.5em;
 }
 
-[dir=rtl] .page li,[dir=rtl] .page dd {
+[dir=rtl] li,[dir=rtl]  dd {
  margin: 0 1.5em 0 0;
 }
 
-.page dt {
+dt {
  font-weight: bold;
  margin: 0;
  padding: 0;
 }
 
-.page li ul,.page  li ol,.page  li dl,.page  dl ul,.page  dl ol,.page dl dl {
+li ul,li ol,li dl,dl ul,dl ol,dl dl {
  margin-bottom: 0;
  padding: 0;
 }
 
-.page li li {
+li li {
  font-size: 100%;
 }
 
-.page ul {
+ul {
  list-style: square outside;
 }
 
-.page ol {
+ol {
  list-style: decimal outside;
 }
 
-.page ol ol {
+ol ol {
  list-style-type: lower-alpha;
 }
 
-.page ol ol ol {
+ol ol ol {
  list-style-type: upper-roman;
 }
 
-.page ol ol ol ol {
+ol ol ol ol {
  list-style-type: upper-alpha;
 }
 
-.page ol ol ol ol ol {
+ol ol ol ol ol {
  list-style-type: lower-roman;
 }

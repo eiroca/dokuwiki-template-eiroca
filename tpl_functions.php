@@ -1,20 +1,11 @@
 <?php
-// $conf['menu_id'];
-// $conf['show_docID'];
-// $conf['show_taglinePage'];
-$conf['menu_id'] = 'menu';
-$conf['show_docID'] = false;
-$conf['show_taglinePage'] = true;
-$conf['show_docInfo'] = true;
-
-
 /**
  * eIrOcA Template Functions
  *
  * @license GPL 2 (http://www.gnu.org/licenses/gpl.html)
  * @author  Enrico Croce <enrico@eiroca.net>
  */
-if (!defined('DOKU_INC')) die(); global $conf;
+if (!defined('DOKU_INC')) die();
 if (!defined('NL')) define('NL',"\n");
 
 function tpl_WikiName($print=true) {
@@ -40,7 +31,6 @@ function tpl_WikiMessages() {
 }
 
 function tpl_WikiLogo() {
- global $conf;
  // get logo either out of the template images folder or data/media folder
  $logoSize = array();
  $logo = tpl_getMediaFile(array(':wiki:logo.png', ':logo.png', 'res/logo.png'), false, $logoSize);
@@ -53,7 +43,7 @@ function tpl_WikiLogo() {
 function tpl_WikiTagLine() {
  global $conf;
  if ($conf['tagline']) {
-  if ($conf['show_taglinePage']) {
+  if (tpl_getConf('show_taglinePage')) {
    $tagline = tpl_include_page($conf['tagline'], false, false);
   }
   else {
@@ -65,8 +55,7 @@ function tpl_WikiTagLine() {
 
 function tpl_WikiDocID() {
  global $ID;
- global $conf;
- if (!$conf['show_docID']) $class=" hidden";
+ if (!tpl_getConf('show_docID')) $class=' hidden';
  echo'<span class="docID'.$class.'">'.hsc($ID).'</span>'.NL;
 }
 
@@ -77,8 +66,7 @@ function tpl_WikiTOC() {
 }
 function tpl_WikiDocInfo() {
  global $ID;
- global $conf;
- if (!$conf['show_docInfo']) $class=" hidden";
+ if (!tpl_getConf('show_docInfo')) $class=' hidden';
  echo'<span class="docInfo'.$class.'">';
  tpl_pageinfo();
  echo '</span>'.NL;
@@ -92,9 +80,8 @@ function tpl_WikiDocData() {
 
 function tpl_WikiMenu() {
  global $ID;
- global $conf;
- $menu_id = $conf['menu_id'];
- if ($menu_id=="") return;
+ $menu_id = tpl_getConf('menu_id');
+ if ($menu_id=='') return;
  $menu = tpl_include_page($menu_id, false, false);
  $num = preg_match_all('|<a\shref="(.*)"\s.*title="(.*)".*>(.*)</a>|U', $menu, $links, PREG_SET_ORDER);
  $me = wl($ID);
@@ -145,7 +132,6 @@ function tpl_WikiSidebar(){
  global $conf;
  tpl_include_page($conf['sidebar'], 1, 1);
 }
-
 
 function tpl_WikiYouAreHere() {
  global $conf;
