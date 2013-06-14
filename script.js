@@ -7,10 +7,6 @@ var device_class = ''; // not yet known
 var device_classes = 'desktop mobile tablet phone';
 
 function tpl_dokuwiki_mobile() {
-  
-}
-
-function tpl_dokuwiki_mobile() {
   // the z-index in mobile.css is (mis-)used purely for detecting the screen
   // mode here
   var screen_mode = jQuery('#screen__mode').css('z-index') + '';
@@ -49,14 +45,68 @@ function tpl_dokuwiki_mobile() {
 }
 
 jQuery(function() {
+  var resizeTimer;
   tpl_dokuwiki_mobile();
-  $(window).resize(function() {
-    tpl_dokuwiki_mobile();
-  });
   // increase content length to match sidebar (desktop mode only)
   var $sidebar = jQuery('.desktop .sidebar');
   if ($sidebar.length) {
     var $content = jQuery('#dokuwiki__content div.docData');
     $content.css('min-height', $sidebar.height());
   }
+  var $page = jQuery('.page');
+  var $foot = jQuery('.footer');
+  $page.css('margin-bottom', $foot.height() + 15);
+  jQuery(window).bind('resize', function() {
+    if (resizeTimer) clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(tpl_dokuwiki_mobile, 200);
+  });
 });
+
+// Disable right click
+var message = "Right click disabled.";
+function clickIE() {
+  if (document.all) {
+    (message);
+    return false;
+  }
+}
+
+function clickNS(e) {
+  if (document.layers || (document.getElementById && !document.all)) {
+    if (e.which == 2 || e.which == 3) {
+      (message);
+      return false;
+    }
+  }
+}
+
+function NoClick() {
+  if (document.layers) {
+    document.captureEvents(Event.MOUSEDOWN);
+    document.onmousedown = clickNS;
+  }
+  else {
+    document.onmouseup = clickNS;
+    document.oncontextmenu = clickIE;
+  }
+  document.oncontextmenu = new Function("return false");
+}
+
+function Resize(id, w, h) {
+  img = document.getElementById(id);
+  if (img) {
+    maxwidth = screen.width - 100;
+    maxheight = screen.heigth - 50;
+    ratio = h / w;
+    if (w > maxwidth) {
+      w = maxwidth;
+      h = w * ratio;
+    }
+    if (h > maxheight) {
+      h = maxheight;
+      w = h / ratio;
+    }
+    img.width = w;
+    img.height = h;
+  }
+}

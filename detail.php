@@ -3,120 +3,77 @@
  * Based upon DokuWiki Default Template 2012
  * @license  GPL 2 (http://www.gnu.org/licenses/gpl.html)
  */
-if (!defined('DOKU_INC')) die();
+if (!defined('DOKU_INC')) die(); /* must be run from within DokuWiki */
 require_once(dirname(__FILE__).'/tpl_functions.php');
 ?>
-<!DOCTYPE html>
-<html lang="<?php echo $conf['lang']?>" dir="<?php echo $lang['direction'] ?>" class="no-js">
+<?php tpl_WikiHeader() ?>
 <head>
-<?php tpl_includeFile('tpl_head.php') ?>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
+<?php echo tpl_favicon(array('favicon', 'mobile', 'generic')) ?>
+<?php tpl_metaheaders() ?>
+<title><?php tpl_WikiTitle() ?></title>
+<script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
 </head>
 <body>
  <!--[if lte IE 7 ]><div id="IE7"><![endif]-->
  <!--[if IE 8 ]><div id="IE8"><![endif]-->
- <div id="dokuwiki__site">
-  <div id="dokuwiki__top" class="dokuwiki site mode_<?php echo $ACT ?>">
-   <?php include('tpl_header.php') ?>
-   <div class="wrapper group" id="dokuwiki__detail">
-    <!-- ********** CONTENT ********** -->
-    <div id="dokuwiki__content">
-     <div class="pad group">
-      <?php if(!$ERROR): ?>
-      <div class="pageId">
-       <span>
-        <?php echo hsc(tpl_img_getTag('IPTC.Headline',$IMG)); ?>
-       </span>
-      </div>
-      <?php endif; ?>
-      <div class="page group">
-       <?php tpl_flush() ?>
-       <?php tpl_includeFile('pageheader.html') ?>
-       <!-- detail start -->
-       <?php
-       if($ERROR):
-        echo '<h1>'.$ERROR.'</h1>';
-      else: ?>
-       <h1>
-        <?php echo nl2br(hsc(tpl_img_getTag('simple.title'))); ?>
-       </h1>
-       <?php tpl_img(900,700); /* parameters: maximum width, maximum height (and more) */ ?>
-       <div class="img_detail">
-        <dl>
-         <?php
-         // @todo: logic should be transferred to backend
-         $config_files = getConfigFiles('mediameta');
-         foreach ($config_files as $config_file) {
-          if(@file_exists($config_file)) {
-           include($config_file);
-          }
-         }
-         foreach($fields as $key => $tag){
-          $t = array();
-          if (!empty($tag[0])) {
-           $t = array($tag[0]);
-          }
-          if(is_array($tag[3])) {
-           $t = array_merge($t,$tag[3]);
-          }
-          $value = tpl_img_getTag($t);
-          if ($value) {
-           echo '<dt>'.$lang[$tag[1]].':</dt><dd>';
-           if ($tag[2] == 'date') {
-            echo dformat($value);
-           } 
-           else {
-            echo hsc($value);
-           }
-           echo '</dd>';
-          }
-         }
-         ?>
-        </dl>
-       </div>
-       <?php //Comment in for Debug// dbg(tpl_img_getTag('Simple.Raw'));?>
-       <?php endif; ?>
-      </div>
-      <!-- detail stop -->
-      <?php tpl_includeFile('pagefooter.html') ?>
-      <?php tpl_flush() ?>
-
-      <?php /* doesn't make sense like this; @todo: maybe add tpl_imginfo()?
-                                    <div class="docInfo"><?php tpl_pageinfo(); ?></div>
-                */ ?>
-
-     </div>
-    </div>
-    <!-- /content -->
-    <hr class="a11y" />
-    <!-- PAGE ACTIONS -->
-    <?php if (!$ERROR): ?>
-    <div id="dokuwiki__pagetools">
-     <h3 class="a11y">
-      <?php echo $lang['page_tools']; ?>
-     </h3>
-     <div class="tools">
-      <ul>
-       <?php // View in media manager; @todo: transfer logic to backend
-        $imgNS = getNS($IMG);
-        $authNS = auth_quickaclcheck("$imgNS:*");
-        if (($authNS >= AUTH_UPLOAD) && function_exists('media_managerURL')) {
-         $mmURL = media_managerURL(array('ns' => $imgNS, 'image' => $IMG));
-         echo '<li><a href="'.$mmURL.'" class="mediaManager"><span>'.$lang['img_manager'].'</span></a></li>';
-        }
-       ?>
-       <?php // Back to [ID]; @todo: transfer logic to backend
-        echo '<li><a href="'.wl($ID).'" class="back"><span>'.$lang['img_backto'].' '.$ID.'</span></a></li>';
-       ?>
-      </ul>
-     </div>
-    </div>
-    <?php endif; ?>
+ <?php tpl_WikiMessages() ?>
+ <div id="dokuwiki__top" class="page container dokuwiki">
+  <div class="header container">
+   <?php tpl_A11Y('skip_to_content') ?>
+   <div class="logo">
+    <?php tpl_WikiLogo() ?>
+    <?php tpl_WikiTagLine() ?>
+    <?php tpl_WikiDocID() ?>
    </div>
-   <!-- /wrapper -->
-   <?php include('tpl_footer.php') ?>
+   <div class="navigation smooth_border">
+    <?php tpl_WikiMenu() ?>
+    <?php tpl_WikiSearch() ?>
+   </div>
+   <?php tpl_A11Y() ?>
+  </div>
+  <div class="content dokuwiki fullwidth">
+   <?php tpl_A11Y('content') ?>
+   <div id="dokuwiki__content" class="WikiDetail">
+    <?php if($ERROR){ 
+     print $ERROR;
+    }
+    else{ ?>
+    <div class="image">
+     <a href="#" onclick="history.go(-1)"><?php tpl_img(0,0,false,array(id=>"img_id")) ?> </a>
+    </div>
+    <?php } ?>
+    <div class="img_detail">
+     <p>
+      &larr;
+      <?php echo $lang['img_backto']?>
+      <?php tpl_pagelink($ID)?>
+     </p>
+    </div>
+   </div>
+   <?php tpl_A11Y() ?>
   </div>
  </div>
- <!-- /site -->
+ <div class="footer container">
+  <?php tpl_A11Y('site_tools') ?>
+  <?php tpl_WikiLicence() ?>
+  <?php tpl_A11Y() ?>
+ </div>
  <!--[if ( lte IE 7 | IE 8 ) ]></div><![endif]-->
+ <div class="no">
+  <?php tpl_indexerWebBug() ?>
+ </div>
+ <div id="screen__mode" class="no"></div>
+ <script type="text/javascript"><!--//--><![CDATA[//><!--
+//NoClick();
+<?php 
+	$w = tpl_img_getTag('File.Width');
+	$h = tpl_img_getTag('File.Height');
+  echo 'Resize("img_id",'.$w.','.$h.');'; ?>
+//--><!]]>
+ </script>
 </body>
 </html>

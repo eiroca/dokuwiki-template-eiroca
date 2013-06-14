@@ -51,62 +51,258 @@
  list-style-image: url(../../images/closed-rtl.png);
 }
 
-.dokuwiki .changeType {
+.page .changeType {
  margin-bottom: .5em;
 }
 
-.dokuwiki form.changes ul li {
+.page form.changes ul li {
  list-style: none;
  margin-left: 0;
 }
 
-[dir=rtl] .dokuwiki form.changes ul li {
+[dir=rtl] .page form.changes ul li {
  margin-right: 0;
 }
 
-.dokuwiki form.changes ul li span,.dokuwiki form.changes ul li a {
+.page form.changes ul li span,.page form.changes ul li a {
  vertical-align: middle;
 }
 
-.dokuwiki form.changes ul li span.user a {
+.page form.changes ul li span.user a {
  vertical-align: bottom;
 }
 
-.dokuwiki form.changes ul li.minor {
+.page form.changes ul li.minor {
  opacity: .7;
 }
 
-.dokuwiki form.changes li span.date {
+.page form.changes li span.date {
  
 }
 
-.dokuwiki form.changes li a.diff_link {
+.page form.changes li a.diff_link {
  vertical-align: baseline;
 }
 
-.dokuwiki form.changes li a.revisions_link {
+.page form.changes li a.revisions_link {
  vertical-align: baseline;
 }
 
-.dokuwiki form.changes li a.wikilink1,.dokuwiki form.changes li a.wikilink2 {
+.page form.changes li a.wikilink1,.page form.changes li a.wikilink2 {
  
 }
 
-.dokuwiki form.changes li span.sum {
+.page form.changes li span.sum {
  font-weight: bold;
 }
 
-.dokuwiki form.changes li span.user {
+.page form.changes li span.user {
  
 }
 
-.dokuwiki div.pagenav {
+.page div.pagenav {
  text-align: center;
  margin: 1.4em 0;
 }
 
-.dokuwiki div.pagenav-prev,.dokuwiki div.pagenav-next {
+.page div.pagenav-prev,.page div.pagenav-next {
  display: inline;
  margin: 0 .5em;
 }
 
+/*____________ tables ____________*/
+table {
+ border-collapse: collapse;
+ empty-cells: show;
+ border-spacing: 0;
+ border: 1px solid __highlight__;
+}
+
+caption {
+ caption-side: top;
+ text-align: left;
+}
+
+[dir=rtl] caption {
+ text-align: right;
+}
+
+th,td {
+ padding: .3em .5em;
+ margin: 0;
+ vertical-align: top;
+ border: 1px solid __highlight__;
+}
+
+th {
+ font-weight: bold;
+ background-color: __background_alt__;
+ text-align: left;
+}
+
+[dir=rtl] th {
+ text-align: right;
+}
+/* div around each table */
+.page div.table {
+ overflow-x: auto;
+ margin-bottom: 1.4em;
+}
+
+.page div.table table {
+ margin-bottom: 0;
+}
+
+.page table.inline {
+ min-width: 50%;
+}
+
+.page table.inline tr:hover td {
+ background-color: __highlight__;
+}
+
+.page table.inline tr:hover th {
+ 
+}
+
+/* tables */
+@media only print {
+ table {
+  border-collapse: collapse;
+  empty-cells: show;
+  border-spacing: 0;
+  border: 1pt solid #ccc;
+ }
+ th,td {
+  padding: 3pt 5pt;
+  margin: 0;
+  vertical-align: top;
+  border: 1pt solid #666;
+ }
+ th {
+  font-weight: bold;
+  text-align: left;
+ }
+ [dir=rtl] th {
+  text-align: right;
+ }
+}
+
+/* First image in top level section */
+.level1>p:first-child a.media {
+ position: relative;
+ float: left;
+ margin: 0.5em 1.5em 0.5em 0.5em;
+ padding: 0.5em;
+ -webkit-border-radius: .5em;
+ -moz-border-radius: .5em;
+ border-radius: .5em;
+ background-color: white;
+ border: 1px solid __site_background__;
+}
+
+.level1>p:first-child a.media:hover {
+ border: 1px solid __highlight__;
+}
+
+/* Link ReadMore */
+div.dokuwiki p.include_readmore {
+ text-align: left;
+ font-weight: bold;
+ font-size: 15px;
+ font-family: __font_family__;
+ color: __link_alt__;
+}
+
+div.dokuwiki p.include_readmore a {
+ color: __link_alt__;
+}
+
+/* links to wiki pages */
+.dokuwiki a.wikilink1 {
+ 
+}
+/* not existing wikipage */
+.dokuwiki a.wikilink2 {
+ text-decoration: none;
+}
+
+.dokuwiki a.wikilink2:link,.dokuwiki a.wikilink2:visited {
+ border-bottom: 1px dashed;
+}
+
+.dokuwiki a.wikilink2:hover,.dokuwiki a.wikilink2:active,.dokuwiki a.wikilink2:focus {
+ border-bottom-width: 0;
+}
+
+.dokuwiki span.curid a {
+ font-weight: bold;
+}
+
+.sidebar span.curid a {
+ font-weight: inherit;
+}
+
+/*____________ other link types ____________*/
+.dokuwiki a.urlextern,.dokuwiki a.windows,.dokuwiki a.mail,.dokuwiki a.mediafile,.dokuwiki a.interwiki {
+ background-repeat: no-repeat;
+ background-position: 0 center;
+ padding: 0 0 0 18px;
+}
+
+.dokuwiki a.urlextern {
+ background-image: url(../../images/external-link.png);
+}
+
+.dokuwiki a.windows {
+ background-image: url(../../images/unc.png);
+}
+
+.dokuwiki a.mail {
+ background-image: url(../../images/email.png);
+}
+
+.dokuwiki a.mediafile {
+ 
+}
+
+.dokuwiki a.interwiki {
+ 
+}
+
+/* RTL corrections; if link icons don't work as expected, remove the following lines */
+[dir=rtl] .dokuwiki a.urlextern,[dir=rtl] .dokuwiki a.windows,[dir=rtl] .dokuwiki a.mail,[dir=rtl] .dokuwiki a.interwiki,[dir=rtl] .dokuwiki a.mediafile {
+ background-position: right center;
+ padding: 0 18px 0 0;
+ display: inline-block; /* needed for IE7 */
+}
+
+div.dokuwiki table.ul {
+ width: auto;
+}
+
+div.dokuwiki table.ul .page {
+ width: auto;
+ box-shadow: none;
+}
+
+div.dokuwiki table.ul .tags {
+ width: auto;
+ box-shadow: none;
+}
+
+#dokuwiki__content p {
+ text-align: justify;
+}
+
+div.dokuwiki div.gallery table img.tn {
+ -webkit-border-radius: .5em;
+ -moz-border-radius: .5em;
+ border-radius: .5em;
+}
+
+div.thumb2 .thumbinner {
+ -webkit-border-radius: .5em;
+ -moz-border-radius: .5em;
+ border-radius: .5em;
+}

@@ -9,14 +9,15 @@ span.search {
  display: inline;
  float: right;
  width: auto;
- padding: 0.5em 0em;
+ padding: 5px 0em;
  text-align: right;
 }
 
 form.search {
  display: inline;
- margin-right: 0.15em;
- font-size: 0.875em;
+ margin-right: 0.5em;
+ font-size: 14px;
+ padding: 1px 0.5em 1px 0.5em;
 }
 
 #IE7 form.search {
@@ -26,22 +27,18 @@ form.search {
 
 form.search input.edit {
  width: 12em;
- padding: .35em 22px .35em .1em;
-}
-
-[dir=rtl] form.search input.edit {
- padding: .35em .1em .35em 22px;
+ padding: 1px 0px 1px 0px;
 }
 
 form.search input.button {
  background: transparent url(res/search.png) no-repeat 0 0;
  border-width: 0;
- width: 19px;
+ width: 14px;
  height: 14px;
  text-indent: -99999px;
- margin-left: -20px;
+ margin-left: -18px;
+ margin-top: 2px;
  box-shadow: none;
- padding: 0;
 }
 
 [dir=rtl] form.search input.button {

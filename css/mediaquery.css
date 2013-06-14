@@ -55,7 +55,7 @@
   clear: both;
   float: left;
   display: block;
-  width: auto;
+  width: 100%;
  }
  .navigation ul li a {
   font-size: 16px;
@@ -63,11 +63,16 @@
  .data {
   width: 100%;
  }
+ .WikiData {
+  width: 100%;
+ }
  .sidebar {
-  float: inherit;
+  clear : left;
+  float: left;
   margin: 0.75em auto 0em;
   display: block;
-  margin: 0.75em auto 0em;
+  width: auto;
+  clear: left;
  }
 }
 

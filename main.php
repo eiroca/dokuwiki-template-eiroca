@@ -5,11 +5,8 @@
  */
 if (!defined('DOKU_INC')) die(); /* must be run from within DokuWiki */
 require_once(dirname(__FILE__).'/tpl_functions.php');
-$hasSidebar = page_findnearest($conf['sidebar']);
-$showSidebar = $hasSidebar && ($ACT=='show');
 ?>
-<!DOCTYPE html>
-<html lang="<?php echo $conf['lang'] ?>" dir="<?php echo $lang['direction'] ?>" class="no-js">
+<?php tpl_WikiHeader() ?>
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -38,14 +35,15 @@ $showSidebar = $hasSidebar && ($ACT=='show');
    </div>
    <?php tpl_A11Y() ?>
   </div>
-  <div class="content container">
+  <div class="content dokuwiki container">
    <?php tpl_A11Y('content') ?>
-   <div id="dokuwiki__content" class="data">
+   <div id="dokuwiki__content" class="WikiData">
     <?php tpl_WikiDocData() ?>
    </div>
    <?php tpl_A11Y() ?>
    <div class="sidebar smooth_border">
-    <?php tpl_WikiSidebar() ?>
+    <div class="translate"><?php $translation_plugin = &plugin_load('syntax','translation'); if ( $translation_plugin ) { if ( !plugin_isdisabled($translation_plugin->getPluginName() ) ) { print $translation_plugin->_showTranslations(); }} ?></div>
+   <?php tpl_WikiSidebar() ?>
     <?php tpl_WikiTOC() ?>
    </div>
   </div>
@@ -65,5 +63,15 @@ $showSidebar = $hasSidebar && ($ACT=='show');
   <?php tpl_indexerWebBug() ?>
  </div>
  <div id="screen__mode" class="no"></div>
-</body>
+<!-- 
+ <script type="text/javascript">
+  window.___gcfg = {lang: 'it'};
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+ </script>
+ -->
+ </body>
 </html>

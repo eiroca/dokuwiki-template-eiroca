@@ -8,6 +8,37 @@
 if (!defined('DOKU_INC')) die();
 if (!defined('NL')) define('NL',"\n");
 
+function startsWith($haystack,$needle,$case=true) {
+ if($case) return strpos($haystack, $needle, 0) === 0;
+ return stripos($haystack, $needle, 0) === 0;
+}
+
+function endsWith($haystack,$needle,$case=true) {
+ $expectedPosition = strlen($haystack) - strlen($needle);
+ if($case) return strrpos($haystack, $needle, 0) === $expectedPosition;
+ return strripos($haystack, $needle, 0) === $expectedPosition;
+}
+
+function tpl_homepage($print=true) {
+ global $ID;
+ $path  = explode(':', $ID);
+ if ((count($path)>1) && ($path[0]!=='tag')) {
+  $home=wl($path[0].":start");
+ }
+ else {
+  $home=wl("start");
+ }
+ if ($print) echo $home;
+ return $home;
+}
+
+function tpl_WikiHeader() {
+ global $conf;
+ global $lang;
+ echo '<!DOCTYPE html>'.NL;
+ echo '<html lang="'.$conf['lang'].'" dir="'.$lang['direction'].'" class="no-js">'.NL;
+}
+
 function tpl_WikiName($print=true) {
  global $conf;
  $title = strip_tags($conf['title']);
@@ -16,9 +47,24 @@ function tpl_WikiName($print=true) {
 }
 
 function tpl_WikiTitle() {
- tpl_WikiName();
- echo ' - ';
- tpl_pagetitle();
+ global $ID;
+ global $conf;
+ $nam = tpl_pagetitle($ID, true);
+ $pos = strpos($nam, ":");
+ if ($pos===false) {
+  $__name = $nam;
+ }
+ else {
+  $__name = substr($nam, $pos+1);
+ }
+ $start = $conf['start'];
+ if (endsWith($__name, $start)) {
+  $__name = trim(substr($__name, 0, strlen($__name) - strlen($start)));
+ }
+ if ($__name!='') {
+  $__name = ' - '.ucwords(str_replace(":", " ", str_replace("_", " ", $__name)));
+ }
+ echo tpl_WikiName(false).$__name;
 }
 
 function tpl_WikiMessages() {
@@ -36,7 +82,7 @@ function tpl_WikiLogo() {
  $logo = tpl_getMediaFile(array(':wiki:logo.png', ':logo.png', 'res/logo.png'), false, $logoSize);
  // display logo and wiki title in a link to the home page
  echo '<span class="logo_img">';
- tpl_link(wl(), '<img src="'.$logo.'" '.$logoSize[3].' alt="'.tpl_WikiName(false).'" />', 'accesskey="h" title="[H]"');
+ tpl_link(tpl_homepage(false), '<img src="'.$logo.'" '.$logoSize[3].' alt="'.tpl_WikiName(false).'" />', 'accesskey="h" title="[H]"');
  echo '</span>'.NL;
 }
 
@@ -44,7 +90,7 @@ function tpl_WikiTagLine() {
  global $conf;
  if ($conf['tagline']) {
   if (tpl_getConf('show_taglinePage')) {
-   $tagline = tpl_include_page($conf['tagline'], false, false);
+   $tagline = tpl_include_page($conf['tagline'], false, true);
   }
   else {
    $tagline = hsc($conf['tagline']);
@@ -80,22 +126,29 @@ function tpl_WikiDocData() {
 
 function tpl_WikiMenu() {
  global $ID;
+ global $conf;
  $menu_id = tpl_getConf('menu_id');
  if ($menu_id=='') return;
- $menu = tpl_include_page($menu_id, false, false);
+ $menu = tpl_include_page($menu_id, false, true);
  $num = preg_match_all('|<a\shref="(.*)"\s.*title="(.*)".*>(.*)</a>|U', $menu, $links, PREG_SET_ORDER);
+ $start = $conf['start'];
+ $start_len = strlen($start);
  $me = wl($ID);
  echo '<span class="menu">';
  foreach($links as $item) {
   if (count($item)===4) {
    $url = $item[1];
-   if (strpos($url, $me)===0) {
+   $expectedPosition = strlen($url) - $start_len;
+   if (strrpos($url, $start, 0) === $expectedPosition) {
+    $url = substr($url, 0, $expectedPosition-1);
+   }
+   if (strpos($me, $url)===0) {
     $class = ' class="current"';
    }
    else {
     $class = '';
    }
-   echo '<span class="menu item"><a href="'.$url.'"'.$class.' title="'.$item[2].'" rel="nofollow">'.$item[3].'</a></span>';
+   echo '<span class="menu item"'.$class.'><a href="'.$item[1].'"'.$class.' title="'.$item[2].'" rel="nofollow">'.$item[3].'</a></span>';
    $class="";
   }
  }
@@ -105,16 +158,6 @@ function tpl_WikiSearch() {
  echo '<span class="search">';
  tpl_searchform();
  echo '</span>'.NL;
-}
-function tpl_homepage() {
- global $ID;
- $path  = explode(':', $ID);
- if (count($path)>1) {
-  $id=$path[0].':start';
- }
- else { $id='start';
- }
- print wl($id);
 }
 
 function tpl_A11Y($section=null) {
@@ -130,7 +173,11 @@ function tpl_A11Y($section=null) {
 
 function tpl_WikiSidebar(){
  global $conf;
- tpl_include_page($conf['sidebar'], 1, 1);
+ global $ACT;
+ $sidebarID = page_findnearest($conf['sidebar']);
+ if ($sidebarID) {
+  tpl_include_page($sidebarID, true, false);
+ }
 }
 
 function tpl_WikiYouAreHere() {

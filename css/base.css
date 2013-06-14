@@ -26,7 +26,7 @@ html,body {
  font-size: 13px;
  color: __text__;
  margin: 0 0 1px;
- line-height: 1.5;
+ line-height: 1.6;
  background: __site_background__ url(res/background.png) repeat left top;
 }
 
@@ -36,24 +36,13 @@ a,p a {
 }
 
 a:hover {
- text-decoration: underline;
  color: __link_over__;
+ text-decoration: underline;
 }
 
-a:visited {
+a:visited,a:active {
  text-decoration: underline;
- font-weight: bold;
- color: __link_visited__;
-}
-
-.footer a:visited {
- text-decoration: underline;
- color: __highlight_neu__;
-}
-
-.footer a:hover {
- text-decoration: underline;
- color: __highlight_neu__;
+ color: __link__;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -62,20 +51,19 @@ h1,h2,h3,h4,h5,h6 {
  position: relative;
  color: __text__;
  text-align: left;
- z-index: 1;
  clear: left;
 }
 
 h1 {
  font-size: 32px;
- line-height: 1.7;
+ line-height: 2;
  margin-bottom: 16px;
  border-bottom: 1px dotted __text__;
 }
 
 h2 {
  font-size: 22px;
- line-height: 1.6;
+ line-height: 1.8;
  padding-top: 12px;
  margin-bottom: 8px;
  border-bottom: 1px dotted __text__;
@@ -83,7 +71,7 @@ h2 {
 
 h3,h4,h5,h6 {
  font-size: 18px;
- line-height: 1.6;
+ line-height: 1.7;
  padding-top: 8px;
  margin-bottom: 8px;
 }
@@ -116,7 +104,7 @@ h3,h4,h5,h6 {
  width: 95%;
  float: none;
  overflow: hidden;
- padding: 0.25em 1em;
+ padding: 0.5em 1em;
  -moz-box-shadow: 0 0 5px 5px __site_background__;
  -webkit-box-shadow: 0 0 5px 5px __site_background__;
  box-shadow: 0 0 5px 5px __site_background__;
@@ -150,23 +138,22 @@ h3,h4,h5,h6 {
  display: inline;
  float: right;
  width: 70%;
- margin: 1em 0em 0em 0em;
- padding: 0em 0.5em 0em 0em;
  text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
  background: __background_neu__;
+ min-height: 36px;
 }
 
 .navigation .menu {
  position: relative;
- top: 0.375em;
- left: 0.5em;
+ top: 3px;
+ left: 6px;
  display: inline;
  text-align: left;
+ line-height: normal;
 }
 
 .menu .item {
  display: inline;
- line-height: normal;
  white-space: nowrap;
 }
 
@@ -174,7 +161,7 @@ h3,h4,h5,h6 {
  font-size: 18px;
  color: __text_neu__;
  font-weight: normal;
- padding: 0.5em 0.2em;
+ padding: 6px 8px 8px 8px;
  background-color: transparent;
  text-decoration: none;
 }
@@ -186,7 +173,6 @@ h3,h4,h5,h6 {
 .menu a.current {
  background-color: __highlight_neu__;
  cursor: default;
- padding: 0.5em 0.2em;
 }
 
 .menu a.current:hover {
@@ -206,11 +192,24 @@ h3,h4,h5,h6 {
  padding: 0.5em;
 }
 
-.data {
+.WikiData {
  position: relative;
  float: left;
  clear: both;
  width: 70%;
+ margin-top: 0em;
+}
+
+.WikiDetail {
+ position: relative;
+ float: left;
+ clear: both;
+ width: 100%;
+ margin-top: 0em;
+}
+
+.WikiDetail .image {
+ text-align: center;
 }
 
 .docData {
@@ -230,10 +229,19 @@ h3,h4,h5,h6 {
  background-color: __background_neu__;
  color: __text_neu__;
  padding: 0.25em 0em 0.5em 0em;
+ position: fixed;
+ bottom: 0px;
+ z-index: 100;
 }
 
-.data {
- margin-top: 0em;
+.footer a:visited {
+ text-decoration: underline;
+ color: __highlight_neu__;
+}
+
+.footer a:hover {
+ text-decoration: underline;
+ color: __highlight_neu__;
 }
 
 .docInfo {
@@ -362,4 +370,12 @@ ol ol ol ol {
 
 ol ol ol ol ol {
  list-style-type: lower-roman;
+}
+
+.COL1 {
+ color: __highlight_alt__;
+}
+
+.COL2 {
+ color: __background_alt__;
 }
