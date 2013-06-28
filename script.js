@@ -53,9 +53,9 @@ jQuery(function() {
     var $content = jQuery('#dokuwiki__content div.docData');
     $content.css('min-height', $sidebar.height());
   }
-  var $page = jQuery('.page');
+  var $page = jQuery('.docPage');
   var $foot = jQuery('.footer');
-  $page.css('margin-bottom', $foot.height() + 15);
+  $page.css('margin-bottom', $foot.height() + 20);
   jQuery(window).bind('resize', function() {
     if (resizeTimer) clearTimeout(resizeTimer);
     resizeTimer = setTimeout(tpl_dokuwiki_mobile, 200);
@@ -110,3 +110,31 @@ function Resize(id, w, h) {
     img.height = h;
   }
 }
+
+jQuery(function() {
+  var menu = document.getElementById('menuBar');
+  var menuLink = document.getElementById('menuLink');
+
+  toggleClass = function(element, className) {
+    var classes = element.className.split(/\s+/);
+    var length = classes.length;
+    var i = 0;
+    while (i < length) {
+      if (classes[i] === className) {
+        classes.splice(i, 1);
+        break;
+      }
+      i++;
+    }
+    if (length === classes.length) {
+      classes.push(className);
+    }
+    element.className = classes.join(' ');
+  };
+
+  menuLink.onclick = function(e) {
+    e.preventDefault();
+    toggleClass(menu, 'open');
+    toggleClass(menuLink, 'open');
+  };
+});

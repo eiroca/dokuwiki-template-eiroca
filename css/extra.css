@@ -51,61 +51,61 @@
  list-style-image: url(../../images/closed-rtl.png);
 }
 
-.page .changeType {
+.dokuwiki .changeType {
  margin-bottom: .5em;
 }
 
-.page form.changes ul li {
+.dokuwiki form.changes ul li {
  list-style: none;
  margin-left: 0;
 }
 
-[dir=rtl] .page form.changes ul li {
+[dir=rtl] .dokuwiki form.changes ul li {
  margin-right: 0;
 }
 
-.page form.changes ul li span,.page form.changes ul li a {
+.dokuwiki form.changes ul li span,.dokuwiki form.changes ul li a {
  vertical-align: middle;
 }
 
-.page form.changes ul li span.user a {
+.dokuwiki form.changes ul li span.user a {
  vertical-align: bottom;
 }
 
-.page form.changes ul li.minor {
+.dokuwiki form.changes ul li.minor {
  opacity: .7;
 }
 
-.page form.changes li span.date {
+.dokuwiki form.changes li span.date {
  
 }
 
-.page form.changes li a.diff_link {
+.dokuwiki form.changes li a.diff_link {
  vertical-align: baseline;
 }
 
-.page form.changes li a.revisions_link {
+.dokuwiki form.changes li a.revisions_link {
  vertical-align: baseline;
 }
 
-.page form.changes li a.wikilink1,.page form.changes li a.wikilink2 {
+.dokuwiki form.changes li a.wikilink1,.dokuwiki form.changes li a.wikilink2 {
  
 }
 
-.page form.changes li span.sum {
+.dokuwiki form.changes li span.sum {
  font-weight: bold;
 }
 
-.page form.changes li span.user {
+.dokuwiki form.changes li span.user {
  
 }
 
-.page div.pagenav {
+.dokuwiki div.pagenav {
  text-align: center;
  margin: 1.4em 0;
 }
 
-.page div.pagenav-prev,.page div.pagenav-next {
+.dokuwiki div.pagenav-prev,.dokuwiki div.pagenav-next {
  display: inline;
  margin: 0 .5em;
 }
@@ -144,24 +144,24 @@ th {
  text-align: right;
 }
 /* div around each table */
-.page div.table {
+.dokuwiki div.table {
  overflow-x: auto;
  margin-bottom: 1.4em;
 }
 
-.page div.table table {
+.dokuwiki div.table table {
  margin-bottom: 0;
 }
 
-.page table.inline {
+.dokuwiki table.inline {
  min-width: 50%;
 }
 
-.page table.inline tr:hover td {
+.dokuwiki table.inline tr:hover td {
  background-color: __highlight__;
 }
 
-.page table.inline tr:hover th {
+.dokuwiki table.inline tr:hover th {
  
 }
 
@@ -305,4 +305,68 @@ div.thumb2 .thumbinner {
  -webkit-border-radius: .5em;
  -moz-border-radius: .5em;
  border-radius: .5em;
+}
+
+div.dokuwiki div.inclmeta {
+ color: __text_alt__;
+}
+
+div.dokuwiki div.comment_wrapper {
+ background-color: __background_alt__;
+ margin: 0.5em;
+ padding: 0.5em;
+ clear: both;
+ -webkit-border-radius: .5em;
+ -moz-border-radius: .5em;
+ border-radius: .5em;
+}
+
+div.dokuwiki div.comment_wrapper h2 {
+ padding: 0px;
+ margin: 0px;
+}
+
+div.dokuwiki #discussion__comment_form textarea.edit {
+ width: 100%;
+}
+
+div.dokuwiki div.comment_form {
+ margin: 2em 1em 1em 1em;
+ clear: both;
+}
+
+.content p {
+ margin-bottom: 0.5em;
+}
+
+.content .sidebar {
+ line-height: 1.4;
+}
+
+.content .sidebar p {
+ margin: 0.5em 0em 0em 0em;
+ padding: 0;
+}
+
+.content .sidebar ul {
+ margin: 0.25em 0 0 0;
+ padding: 0;
+}
+
+.content .sidebar li,.content .sidebar dd {
+ margin: 0 0 0 1em;
+}
+
+.content .sidebar #dw__toc h3 {
+ margin: 1em 0em 0em 0em;
+ padding: 0;
+}
+
+.content .sidebar #dw__toc ul ul {
+ padding-left: 0.5em;
+}
+
+.licence p {
+ padding: 0;
+ margin: 0;
 }

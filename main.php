@@ -7,13 +7,12 @@ if (!defined('DOKU_INC')) die(); /* must be run from within DokuWiki */
 require_once(dirname(__FILE__).'/tpl_functions.php');
 ?>
 <?php tpl_WikiHeader() ?>
-<head>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article# place: http://ogp.me/ns/place#">
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
-<?php echo tpl_favicon(array('favicon', 'mobile', 'generic')) ?>
-<?php tpl_metaheaders() ?>
+<?php tpl_WikiMetaHeaders() ?>
 <title><?php tpl_WikiTitle() ?></title>
 <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
 </head>
@@ -21,7 +20,7 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
  <!--[if lte IE 7 ]><div id="IE7"><![endif]-->
  <!--[if IE 8 ]><div id="IE8"><![endif]-->
  <?php tpl_WikiMessages() ?>
- <div id="dokuwiki__top" class="page container dokuwiki">
+ <div id="dokuwiki__top" class="docPage container dokuwiki StdCol NoBorder">
   <div class="header container">
    <?php tpl_A11Y('skip_to_content') ?>
    <div class="logo">
@@ -29,9 +28,12 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
     <?php tpl_WikiTagLine() ?>
     <?php tpl_WikiDocID() ?>
    </div>
-   <div class="navigation smooth_border">
-    <?php tpl_WikiMenu() ?>
+   <div class="navigation AltCol">
+    <?php tpl_WikiTranslate() ?>
     <?php tpl_WikiSearch() ?>
+   </div>
+   <div class="navigation NeuCol">
+    <?php tpl_WikiMenu() ?>
    </div>
    <?php tpl_A11Y() ?>
   </div>
@@ -41,14 +43,13 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
     <?php tpl_WikiDocData() ?>
    </div>
    <?php tpl_A11Y() ?>
-   <div class="sidebar smooth_border">
-    <div class="translate"><?php $translation_plugin = &plugin_load('syntax','translation'); if ( $translation_plugin ) { if ( !plugin_isdisabled($translation_plugin->getPluginName() ) ) { print $translation_plugin->_showTranslations(); }} ?></div>
-   <?php tpl_WikiSidebar() ?>
+   <div class="sidebar AltCol">
+    <?php tpl_WikiSidebar() ?>
     <?php tpl_WikiTOC() ?>
    </div>
   </div>
  </div>
- <div class="footer container">
+ <div class="footer container NeuCol NoBorder">
   <?php tpl_A11Y('site_tools') ?>
   <?php tpl_WikiTools() ?>
   <?php tpl_WikiDocInfo() ?>
@@ -59,19 +60,9 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
   <?php tpl_A11Y() ?>
  </div>
  <!--[if ( lte IE 7 | IE 8 ) ]></div><![endif]-->
- <div class="no">
+ <div class="hidden">
   <?php tpl_indexerWebBug() ?>
  </div>
- <div id="screen__mode" class="no"></div>
-<!-- 
- <script type="text/javascript">
-  window.___gcfg = {lang: 'it'};
-  (function() {
-    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-    po.src = 'https://apis.google.com/js/plusone.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-  })();
- </script>
- -->
- </body>
+ <div id="screen__mode" class="hidden"></div>
+</body>
 </html>

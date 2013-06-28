@@ -7,6 +7,10 @@
  font-size: 1em;
 }
 
+#dw__toc h3 {
+ border: none;
+}
+
 #dw__toc h3.toggle {
  font-weight: bold;
  margin: inherit;

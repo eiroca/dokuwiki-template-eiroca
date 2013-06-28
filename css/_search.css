@@ -5,19 +5,10 @@
 
 /* search results page
 ********************************************************************/
-span.search {
- display: inline;
- float: right;
- width: auto;
- padding: 5px 0em;
- text-align: right;
-}
-
 form.search {
  display: inline;
- margin-right: 0.5em;
- font-size: 14px;
- padding: 1px 0.5em 1px 0.5em;
+ vertical-align: middle;
+ font-size: 16px;
 }
 
 #IE7 form.search {
@@ -26,12 +17,11 @@ form.search {
 }
 
 form.search input.edit {
- width: 12em;
- padding: 1px 0px 1px 0px;
+ width: 18em;
 }
 
 form.search input.button {
- background: transparent url(res/search.png) no-repeat 0 0;
+ background: transparent url(images/search.png) no-repeat 0 0;
  border-width: 0;
  width: 14px;
  height: 14px;

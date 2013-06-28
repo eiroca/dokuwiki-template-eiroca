@@ -25,60 +25,27 @@
  .desktop-only {
   display: none;
  }
- #dw__toc {
-  float: none;
-  margin: 0 0 1em 0;
-  width: auto;
-  border-left-width: 0;
-  border-bottom: 1px solid __site_background__;
- }
- [dir=rtl] #dw__toc {
-  float: none;
-  margin: 0 0 1em 0;
-  border-right-width: 0;
- }
- #dw__toc h3.toggle {
-  padding: 0 .5em .5em 0;
- }
- #dw__toc>div {
-  padding: .2em 0 .5em;
- }
- div.search {
-  float: left;
-  display: block;
-  width: 100%;
- }
- form.search input.edit {
-  width: 10em;
- }
- .navigation {
+ .page,.header,.content,.logo,.navigation,.WikiData,.docData,.sidebar {
   clear: both;
   float: left;
-  display: block;
+  padding: 0;
   width: 100%;
+  float: none;
+  margin: auto;
  }
- .navigation ul li a {
-  font-size: 16px;
+ .page {
+  width: 98%;
+  margin: 5px;
+  padding: 0px 0px 5px 0px;
  }
- .data {
-  width: 100%;
- }
- .WikiData {
-  width: 100%;
- }
- .sidebar {
-  clear : left;
+ .navigation {
   float: left;
-  margin: 0.75em auto 0em;
-  display: block;
-  width: auto;
-  clear: left;
+  width: 95%;
+  margin: 0 0.5em 0 0.5em;
  }
-}
-
-@media only print {
- div.docId,#dw__toc,div.search {
-  display: none;
+ .WikiData,.sidebar {
+  padding: 0.5em;
+  width: 95%;
  }
 }
 
@@ -93,7 +60,7 @@
   display: none;
  }
  .navigation {
-  width: auto;
+  width: 95%;
  }
  .navigation ul li a {
   font-size: 12px;
@@ -101,12 +68,25 @@
  .footer .user {
   display: none;
  }
- .footer .ActionTop {
+ .footer .actionTop {
   display: inline;
   float: left;
  }
- .footer .Tools {
+ .footer .tools {
   display: inline;
-  float: left;
+  float: none;
+  margin: 0px 10px;
+ }
+ .footer {
+  position: relative;
+ }
+ .docPage,.content {
+  padding: 0em;
+ }
+}
+
+@media only print {
+ div.docId,#dw__toc,div.search {
+  display: none;
  }
 }
