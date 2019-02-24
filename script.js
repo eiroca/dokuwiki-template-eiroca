@@ -32,6 +32,14 @@ function tpl_dokuwiki_mobile() {
       $toc[0].setState(1);
     }
   }
+  var $page = jQuery('.docPage');
+  var $foot = jQuery('.footer');
+  if (device_class.match(/phone/)) {
+    $page.css('margin-bottom', 10);
+  }
+  else {
+    $page.css('margin-bottom', $foot.height() + 20);
+  }
   if (device_class.match(/mobile/)) {
     if ($toc.length) {
       $toc[0].setState(-1);
@@ -53,13 +61,39 @@ jQuery(function() {
     var $content = jQuery('#dokuwiki__content div.docData');
     $content.css('min-height', $sidebar.height());
   }
-  var $page = jQuery('.docPage');
-  var $foot = jQuery('.footer');
-  $page.css('margin-bottom', $foot.height() + 20);
   jQuery(window).bind('resize', function() {
     if (resizeTimer) clearTimeout(resizeTimer);
     resizeTimer = setTimeout(tpl_dokuwiki_mobile, 200);
   });
+});
+
+
+jQuery(function() {
+  var menu = document.getElementById('menuBar');
+  var menuLink = document.getElementById('menuLink');
+
+  toggleClass = function(element, className) {
+    var classes = element.className.split(/\s+/);
+    var length = classes.length;
+    var i = 0;
+    while (i < length) {
+      if (classes[i] === className) {
+        classes.splice(i, 1);
+        break;
+      }
+      i++;
+    }
+    if (length === classes.length) {
+      classes.push(className);
+    }
+    element.className = classes.join(' ');
+  };
+
+  menuLink.onclick = function(e) {
+    e.preventDefault();
+    toggleClass(menu, 'open');
+    toggleClass(menuLink, 'open');
+  };
 });
 
 // Disable right click
@@ -110,31 +144,3 @@ function Resize(id, w, h) {
     img.height = h;
   }
 }
-
-jQuery(function() {
-  var menu = document.getElementById('menuBar');
-  var menuLink = document.getElementById('menuLink');
-
-  toggleClass = function(element, className) {
-    var classes = element.className.split(/\s+/);
-    var length = classes.length;
-    var i = 0;
-    while (i < length) {
-      if (classes[i] === className) {
-        classes.splice(i, 1);
-        break;
-      }
-      i++;
-    }
-    if (length === classes.length) {
-      classes.push(className);
-    }
-    element.className = classes.join(' ');
-  };
-
-  menuLink.onclick = function(e) {
-    e.preventDefault();
-    toggleClass(menu, 'open');
-    toggleClass(menuLink, 'open');
-  };
-});

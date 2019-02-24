@@ -1,92 +1,121 @@
 /* MEDIA QUERY */
 .desktop-only {
- display: block;
+	display: block;
 }
 
 /* For detecting media queries in JavaScript (see script.js) */
 #screen__mode {
- position: relative;
- z-index: 0;
+	position: relative;
+	z-index: 0;
 }
 
 @media only screen and (max-width: __tablet_width__) {
- #screen__mode {
-  z-index: 1; /* for detecting media queries in JavaScript (see script.js) */
- }
+	#screen__mode {
+		z-index: 1;
+		/* for detecting media queries in JavaScript (see script.js) */
+	}
 }
 
 @media only screen and (max-width: __phone_width__) {
- #screen__mode {
-  z-index: 2;
- }
+	#screen__mode {
+		z-index: 2;
+	}
 }
 
 @media only screen and (max-width: __tablet_width__) {
- .desktop-only {
-  display: none;
- }
- .page,.header,.content,.logo,.navigation,.WikiData,.docData,.sidebar {
-  clear: both;
-  float: left;
-  padding: 0;
-  width: 100%;
-  float: none;
-  margin: auto;
- }
- .page {
-  width: 98%;
-  margin: 5px;
-  padding: 0px 0px 5px 0px;
- }
- .navigation {
-  float: left;
-  width: 95%;
-  margin: 0 0.5em 0 0.5em;
- }
- .WikiData,.sidebar {
-  padding: 0.5em;
-  width: 95%;
- }
+	.desktop-only {
+		display: none;
+	}
+	.page, .header, .content, .logo, .navigation, .WikiData, .docData,
+		.sidebar {
+		clear: both;
+		float: left;
+		padding: 0;
+		width: 100%;
+		float: none;
+		margin: auto;
+	}
+	.page {
+		width: 98%;
+		margin: 5px;
+		padding: 0px 0px 5px 0px;
+	}
+	.navigation {
+		float: left;
+		width: 95%;
+		margin: 0 0.5em 0 0.5em;
+	}
+	.WikiData, .sidebar {
+		padding: 0.5em;
+		width: 95%;
+	}
+	.content .sidebar {
+		margin-bottom: 0.5em;
+	}
 }
 
 @media only screen and (max-width: __phone_width__) {
- div.docId {
-  display: none;
- }
- form.search input.edit {
-  width: auto;
- }
- form.search div.ajax_qsearch {
-  display: none;
- }
- .navigation {
-  width: 95%;
- }
- .navigation ul li a {
-  font-size: 12px;
- }
- .footer .user {
-  display: none;
- }
- .footer .actionTop {
-  display: inline;
-  float: left;
- }
- .footer .tools {
-  display: inline;
-  float: none;
-  margin: 0px 10px;
- }
- .footer {
-  position: relative;
- }
- .docPage,.content {
-  padding: 0em;
- }
+	div.docId {
+		display: none;
+	}
+	form.search input.edit {
+		width: auto;
+	}
+	form.search div.ajax_qsearch {
+		display: none;
+	}
+	.navigation {
+		width: 95%;
+	}
+	.navigation ul li a {
+		font-size: 12px;
+	}
+	#menu {
+		border: 0px;
+	}
+	.footer .user {
+		display: none;
+	}
+	.footer .actionTop {
+		display: inline;
+		float: left;
+	}
+	.footer .tools {
+		display: inline;
+		float: none;
+		margin: 0px 10px;
+	}
+	.footer {
+		position: relative;
+	}
+	.docPage, .content {
+		padding: 0em;
+	}
+	.menuLink {
+		display: block;
+	}
+	.menuBar {
+		display: none;
+	}
+	.menuBar.open {
+		font-size: 1.2em;
+		display: block;
+		position: fixed;
+		top: 24px;
+		left: 0px;
+		background: __background_neu__;
+		z-index: 8888;
+		-webkit-border-radius: .5em;
+		-moz-border-radius: .5em;
+		border-radius: .5em;
+	}
+	.menuItem {
+		display: block;
+	}
 }
 
 @media only print {
- div.docId,#dw__toc,div.search {
-  display: none;
- }
+	div.docId, #dw__toc, div.search {
+		display: none;
+	}
 }

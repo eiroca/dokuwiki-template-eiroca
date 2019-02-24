@@ -1,8 +1,9 @@
 <?php
 /**
  * eIrOcA_new Template
+ *
  * @license GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * @author  Enrico Croce <enrico@eiroca.net>
+ * @author Enrico Croce <enrico@eiroca.net>
  */
 $lang['menu_id'] = 'Pagename to use for menu';
 $lang['licence_id'] = 'Pagename to use for licencing information';

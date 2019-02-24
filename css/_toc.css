@@ -1,68 +1,68 @@
 /* toc container */
 #dw__toc {
- float: none;
- margin: 0px;
- color: inherit;
- z-index: 1000;
- font-size: 1em;
+	float: none;
+	margin: 0px;
+	color: inherit;
+	z-index: 1000;
+	font-size: 1em;
 }
 
 #dw__toc h3 {
- border: none;
+	border: none;
 }
 
 #dw__toc h3.toggle {
- font-weight: bold;
- margin: inherit;
- font-size: inherit;
- padding: inherit;
+	font-weight: bold;
+	margin: inherit;
+	font-size: inherit;
+	padding: inherit;
 }
 
 #dw__toc .toggle strong {
- float: right;
- margin: 0 .2em;
+	float: right;
+	margin: 0 .2em;
 }
 
 [dir=rtl] #dw__toc .toggle strong {
- float: left;
+	float: left;
 }
 
 #dw__toc ul .level1 {
- margin-left: 0em;
- list-style: none;
+	margin-left: 0em;
+	list-style: none;
 }
 
 #dw__toc ul {
- padding: 0;
- margin: 0;
+	padding: 0;
+	margin: 0;
 }
 
 #dw__toc ul li {
- margin-left: 1.5em;
- line-height: 1.2;
+	margin-left: 1.5em;
+	line-height: 1.2;
 }
 
 #dw__toc ul li div.li {
- padding: .15em 0;
+	padding: .15em 0;
 }
 
 #dw__toc ul ul {
- padding-left: 1em;
+	padding-left: 1em;
 }
 
 [dir=rtl] #dw__toc ul ul {
- padding-left: 0;
- padding-right: 1em;
+	padding-left: 0;
+	padding-right: 1em;
 }
 
 #dw__toc ul ul li {
- 
+	
 }
 
 #dw__toc ul li a {
- 
+	
 }
 
 #dw__toc ul li.clear {
- 
+	
 }
