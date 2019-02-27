@@ -44,12 +44,11 @@ require_once (dirname(__FILE__) . '/tpl_functions.php');
    <?php tpl_A11Y('content')?>
    <div id="dokuwiki__content" class="WikiDetail">
     <?php
-				
-				if ($ERROR) {
-					print $ERROR;
-				}
-				else {
-					?>
+    if ($ERROR) {
+      print $ERROR;
+    }
+    else {
+      ?>
     <div class="image">
 					<a href="#" onclick="history.go(-1)"><?php tpl_img(0,0,false,array(id=>"img_id")) ?> </a>
 				</div>

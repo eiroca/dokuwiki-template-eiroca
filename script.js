@@ -67,7 +67,6 @@ jQuery(function() {
   });
 });
 
-
 jQuery(function() {
   var menu = document.getElementById('menuBar');
   var menuLink = document.getElementById('menuLink');
